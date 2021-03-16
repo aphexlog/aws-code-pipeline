@@ -73,7 +73,7 @@ export class CodePipelineStack extends cdk.Stack {
                 environment: {
                     buildImage: codeBuild.LinuxBuildImage.STANDARD_2_0,
                     privileged: true,
-                    computeType: codeBuild.ComputeType.LARGE,
+                    computeType: codeBuild.ComputeType.SMALL,
                     environmentVariables: {
                         AWS_DEFAULT_REGION: {
                             type: codeBuild.BuildEnvironmentVariableType.PLAINTEXT,
