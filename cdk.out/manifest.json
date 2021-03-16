@@ -1,0 +1,1544 @@
+{
+  "version": "9.0.0",
+  "artifacts": {
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    },
+    "fs-container-image-pipeline": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://319561458694/us-west-2",
+      "properties": {
+        "templateFile": "fs-container-image-pipeline.template.json"
+      },
+      "metadata": {
+        "/fs-container-image-pipeline": [
+          {
+            "type": "aws:cdk:error",
+            "data": "Need to perform AWS calls for account 319561458694, but no credentials have been configured",
+            "trace": [
+              "Annotations.addMessage (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/core/lib/annotations.ts:92:25)",
+              "Annotations.addError (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/core/lib/annotations.ts:51:10)",
+              "Function.getValue (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/core/lib/context-provider.ts:111:31)",
+              "Function.fromLookup (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1061:66)",
+              "new CodePipelineStack (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/src/lib/code-pipeline-stack.ts:64:30)",
+              "App (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:14:5)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:49:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/fs-container-image-pipeline/CodestarConnection": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CodestarConnection",
+            "trace": [
+              "new CodePipelineStack (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/src/lib/code-pipeline-stack.ts:28:28)",
+              "App (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:14:5)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:49:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/fs-container-image-pipeline/CodeBuildRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CodeBuildRole728CBADE",
+            "trace": [
+              "new Role (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-iam/lib/role.ts:327:18)",
+              "new CodePipelineStack (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/src/lib/code-pipeline-stack.ts:48:31)",
+              "App (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:14:5)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:49:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/fs-container-image-pipeline/CodeBuildRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CodeBuildRoleDefaultPolicy829527DE",
+            "trace": [
+              "new Policy (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-iam/lib/policy.ts:154:22)",
+              "Role.addToPrincipalPolicy (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-iam/lib/role.ts:368:28)",
+              "Role.addToPolicy (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-iam/lib/role.ts:376:17)",
+              "new CodePipelineStack (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/src/lib/code-pipeline-stack.ts:51:23)",
+              "App (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:14:5)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:49:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/fs-container-image-pipeline/LogGroup/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LogGroupF5B46931",
+            "trace": [
+              "new LogGroup (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-logs/lib/log-group.ts:373:22)",
+              "new CodePipelineStack (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/src/lib/code-pipeline-stack.ts:68:35)",
+              "App (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:14:5)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:49:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/fs-container-image-pipeline/PipelineProject/SecurityGroup/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelineProjectSecurityGroupE5459D7B",
+            "trace": [
+              "new SecurityGroup (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codebuild/node_modules/@aws-cdk/aws-ec2/lib/security-group.ts:402:26)",
+              "PipelineProject.configureVpc (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codebuild/lib/project.ts:1161:29)",
+              "new Project (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codebuild/lib/project.ts:877:23)",
+              "new PipelineProject (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codebuild/lib/pipeline-project.ts:14:5)",
+              "new CodePipelineStack (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/src/lib/code-pipeline-stack.ts:55:28)",
+              "App (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:14:5)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:49:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/fs-container-image-pipeline/PipelineProject/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelineProjectDFFBB324",
+            "trace": [
+              "new Project (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codebuild/lib/project.ts:854:22)",
+              "new PipelineProject (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codebuild/lib/pipeline-project.ts:14:5)",
+              "new CodePipelineStack (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/src/lib/code-pipeline-stack.ts:55:28)",
+              "App (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:14:5)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:49:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/fs-container-image-pipeline/PipelineProject/PolicyDocument/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelineProjectPolicyDocumentEA7DE9E9",
+            "trace": [
+              "new Policy (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codebuild/node_modules/@aws-cdk/aws-iam/lib/policy.ts:154:22)",
+              "PipelineProject.addVpcRequiredPermissions (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codebuild/lib/project.ts:1235:20)",
+              "new Project (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codebuild/lib/project.ts:889:10)",
+              "new PipelineProject (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codebuild/lib/pipeline-project.ts:14:5)",
+              "new CodePipelineStack (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/src/lib/code-pipeline-stack.ts:55:28)",
+              "App (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:14:5)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:49:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/fs-container-image-pipeline/Pipeline/ArtifactsBucketEncryptionKey/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelineArtifactsBucketEncryptionKey01D58D69",
+            "trace": [
+              "new Key (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/node_modules/@aws-cdk/aws-kms/lib/key.ts:427:22)",
+              "new Pipeline (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/lib/pipeline.ts:261:25)",
+              "new CodePipelineStack (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/src/lib/code-pipeline-stack.ts:106:26)",
+              "App (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:14:5)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:49:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/fs-container-image-pipeline/Pipeline/ArtifactsBucketEncryptionKeyAlias/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelineArtifactsBucketEncryptionKeyAlias5C510EEE",
+            "trace": [
+              "new Alias (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/node_modules/@aws-cdk/aws-kms/lib/alias.ts:198:22)",
+              "new Pipeline (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/lib/pipeline.ts:267:9)",
+              "new CodePipelineStack (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/src/lib/code-pipeline-stack.ts:106:26)",
+              "App (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:14:5)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:49:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/fs-container-image-pipeline/Pipeline/ArtifactsBucket/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelineArtifactsBucket22248F97",
+            "trace": [
+              "new Bucket (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/node_modules/@aws-cdk/aws-s3/lib/bucket.ts:1323:22)",
+              "new Pipeline (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/lib/pipeline.ts:274:21)",
+              "new CodePipelineStack (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/src/lib/code-pipeline-stack.ts:106:26)",
+              "App (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:14:5)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:49:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/fs-container-image-pipeline/Pipeline/Role/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelineRoleD68726F7",
+            "trace": [
+              "new Role (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/node_modules/@aws-cdk/aws-iam/lib/role.ts:327:18)",
+              "new Pipeline (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/lib/pipeline.ts:285:31)",
+              "new CodePipelineStack (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/src/lib/code-pipeline-stack.ts:106:26)",
+              "App (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:14:5)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:49:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/fs-container-image-pipeline/Pipeline/Role/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelineRoleDefaultPolicyC7A05455",
+            "trace": [
+              "new Policy (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/node_modules/@aws-cdk/aws-iam/lib/policy.ts:154:22)",
+              "Role.addToPrincipalPolicy (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/node_modules/@aws-cdk/aws-iam/lib/role.ts:368:28)",
+              "Function.addToPrincipal (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/node_modules/@aws-cdk/aws-iam/lib/grant.ts:168:61)",
+              "Function.addToPrincipalOrResource (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/node_modules/@aws-cdk/aws-iam/lib/grant.ts:119:26)",
+              "Bucket.grant (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/node_modules/@aws-cdk/aws-s3/lib/bucket.ts:723:27)",
+              "Bucket.grantReadWrite (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/node_modules/@aws-cdk/aws-s3/lib/bucket.ts:647:17)",
+              "new Pipeline (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/lib/pipeline.ts:301:25)",
+              "new CodePipelineStack (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/src/lib/code-pipeline-stack.ts:106:26)",
+              "App (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:14:5)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:49:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/fs-container-image-pipeline/Pipeline/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelineC660917D",
+            "trace": [
+              "new Pipeline (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/lib/pipeline.ts:289:26)",
+              "new CodePipelineStack (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/src/lib/code-pipeline-stack.ts:106:26)",
+              "App (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:14:5)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:49:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/fs-container-image-pipeline/Pipeline/GitHubSource-stage/SourceAction/CodePipelineActionRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelineGitHubSourcestageSourceActionCodePipelineActionRoleCDD707DD",
+            "trace": [
+              "new Role (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/node_modules/@aws-cdk/aws-iam/lib/role.ts:327:18)",
+              "Pipeline.getRoleForAction (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/lib/pipeline.ts:580:20)",
+              "Pipeline._attachActionToPipeline (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/lib/pipeline.ts:407:29)",
+              "Stage.attachActionToPipeline (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/lib/private/stage.ts:141:27)",
+              "Stage.addAction (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/lib/private/stage.ts:91:29)",
+              "new Stage (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/lib/private/stage.ts:38:12)",
+              "Pipeline.addStage (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/lib/pipeline.ts:336:19)",
+              "new CodePipelineStack (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/src/lib/code-pipeline-stack.ts:108:18)",
+              "App (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:14:5)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:49:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/fs-container-image-pipeline/Pipeline/GitHubSource-stage/SourceAction/CodePipelineActionRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelineGitHubSourcestageSourceActionCodePipelineActionRoleDefaultPolicy382884C9",
+            "trace": [
+              "new Policy (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/node_modules/@aws-cdk/aws-iam/lib/policy.ts:154:22)",
+              "Role.addToPrincipalPolicy (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/node_modules/@aws-cdk/aws-iam/lib/role.ts:368:28)",
+              "Role.addToPolicy (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/node_modules/@aws-cdk/aws-iam/lib/role.ts:376:17)",
+              "BitBucketSourceAction.bound (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline-actions/lib/bitbucket/source-action.ts:99:18)",
+              "BitBucketSourceAction.bind (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline-actions/lib/action.ts:63:17)",
+              "RichAction.bind (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/lib/private/rich-action.ts:30:24)",
+              "Pipeline._attachActionToPipeline (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/lib/pipeline.ts:413:37)",
+              "Stage.attachActionToPipeline (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/lib/private/stage.ts:141:27)",
+              "Stage.addAction (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/lib/private/stage.ts:91:29)",
+              "new Stage (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/lib/private/stage.ts:38:12)",
+              "Pipeline.addStage (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/lib/pipeline.ts:336:19)",
+              "new CodePipelineStack (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/src/lib/code-pipeline-stack.ts:108:18)",
+              "App (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:14:5)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:49:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/fs-container-image-pipeline/Pipeline/ImageBuild-stage/ApprovalAction/CodePipelineActionRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelineImageBuildstageApprovalActionCodePipelineActionRole9D748A28",
+            "trace": [
+              "new Role (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/node_modules/@aws-cdk/aws-iam/lib/role.ts:327:18)",
+              "Pipeline.getRoleForAction (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/lib/pipeline.ts:580:20)",
+              "Pipeline._attachActionToPipeline (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/lib/pipeline.ts:407:29)",
+              "Stage.attachActionToPipeline (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/lib/private/stage.ts:141:27)",
+              "Stage.addAction (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/lib/private/stage.ts:91:29)",
+              "new Stage (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/lib/private/stage.ts:38:12)",
+              "Pipeline.addStage (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/lib/pipeline.ts:336:19)",
+              "new CodePipelineStack (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/src/lib/code-pipeline-stack.ts:112:18)",
+              "App (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:14:5)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:49:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/fs-container-image-pipeline/Pipeline/ImageBuild-stage/ImageBuildAction/CodePipelineActionRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelineImageBuildstageImageBuildActionCodePipelineActionRole6D29DB3C",
+            "trace": [
+              "new Role (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/node_modules/@aws-cdk/aws-iam/lib/role.ts:327:18)",
+              "Pipeline.getRoleForAction (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/lib/pipeline.ts:580:20)",
+              "Pipeline._attachActionToPipeline (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/lib/pipeline.ts:407:29)",
+              "Stage.attachActionToPipeline (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/lib/private/stage.ts:141:27)",
+              "Stage.addAction (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/lib/private/stage.ts:91:29)",
+              "new Stage (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/lib/private/stage.ts:38:12)",
+              "Pipeline.addStage (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/lib/pipeline.ts:336:19)",
+              "new CodePipelineStack (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/src/lib/code-pipeline-stack.ts:112:18)",
+              "App (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:14:5)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:49:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/fs-container-image-pipeline/Pipeline/ImageBuild-stage/ImageBuildAction/CodePipelineActionRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelineImageBuildstageImageBuildActionCodePipelineActionRoleDefaultPolicyBFC979E3",
+            "trace": [
+              "new Policy (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/node_modules/@aws-cdk/aws-iam/lib/policy.ts:154:22)",
+              "Role.addToPrincipalPolicy (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/node_modules/@aws-cdk/aws-iam/lib/role.ts:368:28)",
+              "Role.addToPolicy (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/node_modules/@aws-cdk/aws-iam/lib/role.ts:376:17)",
+              "CodeBuildAction.bound (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline-actions/lib/codebuild/build-action.ts:156:18)",
+              "CodeBuildAction.bind (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline-actions/lib/action.ts:63:17)",
+              "RichAction.bind (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/lib/private/rich-action.ts:30:24)",
+              "Pipeline._attachActionToPipeline (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/lib/pipeline.ts:413:37)",
+              "Stage.attachActionToPipeline (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/lib/private/stage.ts:141:27)",
+              "Stage.addAction (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/lib/private/stage.ts:91:29)",
+              "new Stage (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/lib/private/stage.ts:38:12)",
+              "Pipeline.addStage (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-codepipeline/lib/pipeline.ts:336:19)",
+              "new CodePipelineStack (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/src/lib/code-pipeline-stack.ts:112:18)",
+              "App (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:14:5)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:49:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/fs-container-image-pipeline/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata",
+            "trace": [
+              "new MetadataResource (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/core/lib/private/metadata-resource.ts:51:24)",
+              "/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/core/lib/private/synthesis.ts:140:5",
+              "visit (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/core/lib/private/synthesis.ts:201:5)",
+              "visit (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/core/lib/private/synthesis.ts:197:5)",
+              "injectMetadataResources (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/core/lib/private/synthesis.ts:131:3)",
+              "Object.synthesize (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/core/lib/private/synthesis.ts:18:3)",
+              "App.synth (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/core/lib/stage.ts:188:23)",
+              "process.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/core/lib/app.ts:123:45)",
+              "Object.onceWrapper (node:events:485:26)",
+              "process.emit (node:events:378:20)",
+              "process.EventEmitter.emit (node:domain:470:12)",
+              "process.emit (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/source-map-support/source-map-support.js:495:21)"
+            ]
+          }
+        ]
+      }
+    },
+    "fs-asterisk-media": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://319561458694/us-west-2",
+      "properties": {
+        "templateFile": "fs-asterisk-media.template.json"
+      },
+      "metadata": {
+        "/fs-asterisk-media": [
+          {
+            "type": "aws:cdk:error",
+            "data": "Need to perform AWS calls for account 319561458694, but no credentials have been configured",
+            "trace": [
+              "Annotations.addMessage (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/core/lib/annotations.ts:92:25)",
+              "Annotations.addError (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/core/lib/annotations.ts:51:10)",
+              "Function.getValue (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/core/lib/context-provider.ts:111:31)",
+              "Function.fromLookup (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1061:66)",
+              "new MediaStack (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/src/lib/media-stack.ts:30:29)",
+              "App (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:30:5)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:49:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/fs-asterisk-media/Cluster/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ClusterEB0386A7",
+            "trace": [
+              "new Cluster (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/cluster.ts:153:21)",
+              "new MediaStack (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/src/lib/media-stack.ts:32:25)",
+              "App (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:30:5)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:49:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/fs-asterisk-media/Cluster/AutoScalingGroup": [
+          {
+            "type": "aws:cdk:warning",
+            "data": "desiredCapacity has been configured. Be aware this will reset the size of your AutoScalingGroup on every deployment. See https://github.com/aws/aws-cdk/issues/5215",
+            "trace": [
+              "Annotations.addMessage (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/core/lib/annotations.ts:92:25)",
+              "Annotations.addWarning (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/core/lib/annotations.ts:31:10)",
+              "new AutoScalingGroup (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-autoscaling/lib/auto-scaling-group.ts:982:28)",
+              "Cluster.addCapacity (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/cluster.ts:226:30)",
+              "new MediaStack (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/src/lib/media-stack.ts:33:42)",
+              "App (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:30:5)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:49:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/fs-asterisk-media/Cluster/AutoScalingGroup/InstanceSecurityGroup/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ClusterAutoScalingGroupInstanceSecurityGroupEFE9207E",
+            "trace": [
+              "new SecurityGroup (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ec2/lib/security-group.ts:402:26)",
+              "new AutoScalingGroup (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-autoscaling/lib/auto-scaling-group.ts:913:49)",
+              "Cluster.addCapacity (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/cluster.ts:226:30)",
+              "new MediaStack (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/src/lib/media-stack.ts:33:42)",
+              "App (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:30:5)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:49:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/fs-asterisk-media/Cluster/AutoScalingGroup/InstanceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ClusterAutoScalingGroupInstanceRoleFF996623",
+            "trace": [
+              "new Role (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-iam/lib/role.ts:327:18)",
+              "new AutoScalingGroup (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-autoscaling/lib/auto-scaling-group.ts:921:31)",
+              "Cluster.addCapacity (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/cluster.ts:226:30)",
+              "new MediaStack (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/src/lib/media-stack.ts:33:42)",
+              "App (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:30:5)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:49:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/fs-asterisk-media/Cluster/AutoScalingGroup/InstanceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ClusterAutoScalingGroupInstanceRoleDefaultPolicy2F28E70E",
+            "trace": [
+              "new Policy (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-iam/lib/policy.ts:154:22)",
+              "Role.addToPrincipalPolicy (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-iam/lib/role.ts:368:28)",
+              "Role.addToPolicy (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-iam/lib/role.ts:376:17)",
+              "AutoScalingGroup.addToRolePolicy (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-autoscaling/lib/auto-scaling-group.ts:1100:15)",
+              "Cluster.addAutoScalingGroup (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/cluster.ts:295:22)",
+              "Cluster.addCapacity (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/cluster.ts:233:10)",
+              "new MediaStack (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/src/lib/media-stack.ts:33:42)",
+              "App (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:30:5)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:49:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/fs-asterisk-media/Cluster/AutoScalingGroup/InstanceProfile": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ClusterAutoScalingGroupInstanceProfileF796E806",
+            "trace": [
+              "new AutoScalingGroup (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-autoscaling/lib/auto-scaling-group.ts:932:24)",
+              "Cluster.addCapacity (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/cluster.ts:226:30)",
+              "new MediaStack (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/src/lib/media-stack.ts:33:42)",
+              "App (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:30:5)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:49:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/fs-asterisk-media/Cluster/AutoScalingGroup/LaunchConfig": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ClusterAutoScalingGroupLaunchConfig6C0C8B5B",
+            "trace": [
+              "new AutoScalingGroup (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-autoscaling/lib/auto-scaling-group.ts:942:26)",
+              "Cluster.addCapacity (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/cluster.ts:226:30)",
+              "new MediaStack (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/src/lib/media-stack.ts:33:42)",
+              "App (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:30:5)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:49:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/fs-asterisk-media/Cluster/AutoScalingGroup/ASG": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ClusterAutoScalingGroupASG8FBA5099",
+            "trace": [
+              "new AutoScalingGroup (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-autoscaling/lib/auto-scaling-group.ts:1030:29)",
+              "Cluster.addCapacity (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/cluster.ts:226:30)",
+              "new MediaStack (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/src/lib/media-stack.ts:33:42)",
+              "App (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:30:5)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:49:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/fs-asterisk-media/Cluster/AutoScalingGroup/DrainECSHook/Function/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ClusterAutoScalingGroupDrainECSHookFunctionServiceRole57B0BAC7",
+            "trace": [
+              "new Role (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-iam/lib/role.ts:327:18)",
+              "new Function (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-lambda/lib/function.ts:552:31)",
+              "new InstanceDrainHook (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/drain-hook/instance-drain-hook.ts:67:16)",
+              "Cluster.addAutoScalingGroup (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/cluster.ts:335:7)",
+              "Cluster.addCapacity (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/cluster.ts:233:10)",
+              "new MediaStack (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/src/lib/media-stack.ts:33:42)",
+              "App (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:30:5)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:49:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/fs-asterisk-media/Cluster/AutoScalingGroup/DrainECSHook/Function/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ClusterAutoScalingGroupDrainECSHookFunctionServiceRoleDefaultPolicy68C0A46A",
+            "trace": [
+              "new Policy (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-iam/lib/policy.ts:154:22)",
+              "Role.addToPrincipalPolicy (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-iam/lib/role.ts:368:28)",
+              "Role.addToPolicy (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-iam/lib/role.ts:376:17)",
+              "Function.addToRolePolicy (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-lambda/lib/function-base.ts:263:15)",
+              "new InstanceDrainHook (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/drain-hook/instance-drain-hook.ts:89:8)",
+              "Cluster.addAutoScalingGroup (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/cluster.ts:335:7)",
+              "Cluster.addCapacity (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/cluster.ts:233:10)",
+              "new MediaStack (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/src/lib/media-stack.ts:33:42)",
+              "App (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:30:5)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:49:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/fs-asterisk-media/Cluster/AutoScalingGroup/DrainECSHook/Function/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ClusterAutoScalingGroupDrainECSHookFunction3B9A0374",
+            "trace": [
+              "new Function (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-lambda/lib/function.ts:614:35)",
+              "new InstanceDrainHook (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/drain-hook/instance-drain-hook.ts:67:16)",
+              "Cluster.addAutoScalingGroup (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/cluster.ts:335:7)",
+              "Cluster.addCapacity (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/cluster.ts:233:10)",
+              "new MediaStack (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/src/lib/media-stack.ts:33:42)",
+              "App (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:30:5)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:49:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/fs-asterisk-media/Cluster/AutoScalingGroup/DrainECSHook/Function/AllowInvoke:fsasteriskmediaClusterAutoScalingGroupLifecycleHookDrainHookTopic67B27063": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ClusterAutoScalingGroupDrainECSHookFunctionAllowInvokefsasteriskmediaClusterAutoScalingGroupLifecycleHookDrainHookTopic67B270638C18A898",
+            "trace": [
+              "Function.addPermission (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-lambda/lib/function-base.ts:245:5)",
+              "LambdaSubscription.bind (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-sns-subscriptions/lib/lambda.ts:34:13)",
+              "Topic.addSubscription (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-sns/lib/topic-base.ts:70:45)",
+              "FunctionHook.bind (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-autoscaling-hooktargets/lib/lambda-hook.ts:35:11)",
+              "new LifecycleHook (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-autoscaling/lib/lifecycle-hook.ts:104:50)",
+              "AutoScalingGroup.addLifecycleHook (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-autoscaling/lib/auto-scaling-group.ts:704:12)",
+              "new InstanceDrainHook (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/drain-hook/instance-drain-hook.ts:80:28)",
+              "Cluster.addAutoScalingGroup (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/cluster.ts:335:7)",
+              "Cluster.addCapacity (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/cluster.ts:233:10)",
+              "new MediaStack (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/src/lib/media-stack.ts:33:42)",
+              "App (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:30:5)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:49:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/fs-asterisk-media/Cluster/AutoScalingGroup/DrainECSHook/Function/Topic/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ClusterAutoScalingGroupDrainECSHookFunctionTopic32FF6F7C",
+            "trace": [
+              "new Subscription (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-sns/lib/subscription.ts:108:5)",
+              "Topic.addSubscription (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-sns/lib/topic-base.ts:84:5)",
+              "FunctionHook.bind (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-autoscaling-hooktargets/lib/lambda-hook.ts:35:11)",
+              "new LifecycleHook (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-autoscaling/lib/lifecycle-hook.ts:104:50)",
+              "AutoScalingGroup.addLifecycleHook (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-autoscaling/lib/auto-scaling-group.ts:704:12)",
+              "new InstanceDrainHook (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/drain-hook/instance-drain-hook.ts:80:28)",
+              "Cluster.addAutoScalingGroup (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/cluster.ts:335:7)",
+              "Cluster.addCapacity (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/cluster.ts:233:10)",
+              "new MediaStack (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/src/lib/media-stack.ts:33:42)",
+              "App (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:30:5)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:49:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/fs-asterisk-media/Cluster/AutoScalingGroup/LifecycleHookDrainHook/Role/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ClusterAutoScalingGroupLifecycleHookDrainHookRoleC77C78EE",
+            "trace": [
+              "new Role (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-iam/lib/role.ts:327:18)",
+              "new LifecycleHook (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-autoscaling/lib/lifecycle-hook.ts:100:31)",
+              "AutoScalingGroup.addLifecycleHook (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-autoscaling/lib/auto-scaling-group.ts:704:12)",
+              "new InstanceDrainHook (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/drain-hook/instance-drain-hook.ts:80:28)",
+              "Cluster.addAutoScalingGroup (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/cluster.ts:335:7)",
+              "Cluster.addCapacity (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/cluster.ts:233:10)",
+              "new MediaStack (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/src/lib/media-stack.ts:33:42)",
+              "App (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:30:5)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:49:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/fs-asterisk-media/Cluster/AutoScalingGroup/LifecycleHookDrainHook/Role/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ClusterAutoScalingGroupLifecycleHookDrainHookRoleDefaultPolicy7EBAED85",
+            "trace": [
+              "new Policy (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-iam/lib/policy.ts:154:22)",
+              "Role.addToPrincipalPolicy (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-iam/lib/role.ts:368:28)",
+              "Function.addToPrincipal (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-iam/lib/grant.ts:168:61)",
+              "Function.addToPrincipalOrResource (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-iam/lib/grant.ts:119:26)",
+              "Topic.grantPublish (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-sns/lib/topic-base.ts:119:22)",
+              "TopicHook.bind (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-autoscaling-hooktargets/lib/topic-hook.ts:13:16)",
+              "FunctionHook.bind (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-autoscaling-hooktargets/lib/lambda-hook.ts:36:33)",
+              "new LifecycleHook (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-autoscaling/lib/lifecycle-hook.ts:104:50)",
+              "AutoScalingGroup.addLifecycleHook (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-autoscaling/lib/auto-scaling-group.ts:704:12)",
+              "new InstanceDrainHook (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/drain-hook/instance-drain-hook.ts:80:28)",
+              "Cluster.addAutoScalingGroup (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/cluster.ts:335:7)",
+              "Cluster.addCapacity (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/cluster.ts:233:10)",
+              "new MediaStack (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/src/lib/media-stack.ts:33:42)",
+              "App (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:30:5)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:49:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/fs-asterisk-media/Cluster/AutoScalingGroup/LifecycleHookDrainHook/Topic/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ClusterAutoScalingGroupLifecycleHookDrainHookTopicF7EAE279",
+            "trace": [
+              "new Topic (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-sns/lib/topic.ts:100:22)",
+              "FunctionHook.bind (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-autoscaling-hooktargets/lib/lambda-hook.ts:27:19)",
+              "new LifecycleHook (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-autoscaling/lib/lifecycle-hook.ts:104:50)",
+              "AutoScalingGroup.addLifecycleHook (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-autoscaling/lib/auto-scaling-group.ts:704:12)",
+              "new InstanceDrainHook (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/drain-hook/instance-drain-hook.ts:80:28)",
+              "Cluster.addAutoScalingGroup (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/cluster.ts:335:7)",
+              "Cluster.addCapacity (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/cluster.ts:233:10)",
+              "new MediaStack (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/src/lib/media-stack.ts:33:42)",
+              "App (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:30:5)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:49:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/fs-asterisk-media/Cluster/AutoScalingGroup/LifecycleHookDrainHook/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ClusterAutoScalingGroupLifecycleHookDrainHookF53E2057",
+            "trace": [
+              "new LifecycleHook (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-autoscaling/lib/lifecycle-hook.ts:106:22)",
+              "AutoScalingGroup.addLifecycleHook (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-autoscaling/lib/auto-scaling-group.ts:704:12)",
+              "new InstanceDrainHook (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/drain-hook/instance-drain-hook.ts:80:28)",
+              "Cluster.addAutoScalingGroup (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/cluster.ts:335:7)",
+              "Cluster.addCapacity (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/cluster.ts:233:10)",
+              "new MediaStack (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/src/lib/media-stack.ts:33:42)",
+              "App (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:30:5)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:49:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/fs-asterisk-media/SsmParameterValue:--aws--service--ecs--optimized-ami--amazon-linux-2--recommended--image_id:C96584B6-F00A-464E-AD19-53AFF4B05118.Parameter": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SsmParameterValueawsserviceecsoptimizedamiamazonlinux2recommendedimageidC96584B6F00A464EAD1953AFF4B05118Parameter",
+            "trace": [
+              "Function.fromStringParameterAttributes (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ssm/lib/parameter.ts:328:9)",
+              "Function.valueForTypedStringParameter (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ssm/lib/parameter.ts:398:17)",
+              "EcsOptimizedAmi.getImage (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/cluster.ts:552:37)",
+              "new AutoScalingGroup (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-autoscaling/lib/auto-scaling-group.ts:937:44)",
+              "Cluster.addCapacity (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/cluster.ts:226:30)",
+              "new MediaStack (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/src/lib/media-stack.ts:33:42)",
+              "App (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:30:5)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:49:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/fs-asterisk-media/TaskDefinition/TaskRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "TaskDefinitionTaskRoleFD40A61D",
+            "trace": [
+              "new Role (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-iam/lib/role.ts:327:18)",
+              "new TaskDefinition (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/base/task-definition.ts:304:39)",
+              "new FargateTaskDefinition (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/fargate/fargate-task-definition.ts:87:5)",
+              "new MediaStack (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/src/lib/media-stack.ts:47:32)",
+              "App (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:30:5)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:49:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/fs-asterisk-media/TaskDefinition/TaskRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "TaskDefinitionTaskRoleDefaultPolicy282E8624",
+            "trace": [
+              "new Policy (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-iam/lib/policy.ts:154:22)",
+              "Role.addToPrincipalPolicy (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-iam/lib/role.ts:368:28)",
+              "Role.addToPolicy (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-iam/lib/role.ts:376:17)",
+              "FargateTaskDefinition.addToTaskRolePolicy (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/base/task-definition.ts:409:19)",
+              "new MediaStack (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/src/lib/media-stack.ts:62:24)",
+              "App (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:30:5)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:49:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/fs-asterisk-media/TaskDefinition/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "TaskDefinitionB36D86D9",
+            "trace": [
+              "new TaskDefinition (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/base/task-definition.ts:308:21)",
+              "new FargateTaskDefinition (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/fargate/fargate-task-definition.ts:87:5)",
+              "new MediaStack (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/src/lib/media-stack.ts:47:32)",
+              "App (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:30:5)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:49:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/fs-asterisk-media/TaskDefinition/AsteriskContainer/LogGroup/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "TaskDefinitionAsteriskContainerLogGroupCC3973E7",
+            "trace": [
+              "new LogGroup (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-logs/lib/log-group.ts:373:22)",
+              "AwsLogDriver.bind (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/log-drivers/aws-log-driver.ts:95:44)",
+              "new ContainerDefinition (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/container-definition.ts:410:44)",
+              "FargateTaskDefinition.addContainer (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/base/task-definition.ts:423:12)",
+              "new MediaStack (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/src/lib/media-stack.ts:50:50)",
+              "App (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:30:5)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:49:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/fs-asterisk-media/TaskDefinition/ExecutionRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "TaskDefinitionExecutionRole8D61C2FB",
+            "trace": [
+              "new Role (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-iam/lib/role.ts:327:18)",
+              "FargateTaskDefinition.obtainExecutionRole (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/base/task-definition.ts:484:29)",
+              "EcrImage.bind (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/images/ecr.ts:32:66)",
+              "new ContainerDefinition (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/container-definition.ts:408:36)",
+              "FargateTaskDefinition.addContainer (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/base/task-definition.ts:423:12)",
+              "new MediaStack (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/src/lib/media-stack.ts:50:50)",
+              "App (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:30:5)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:49:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/fs-asterisk-media/TaskDefinition/ExecutionRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "TaskDefinitionExecutionRoleDefaultPolicy1F3406F5",
+            "trace": [
+              "new Policy (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-iam/lib/policy.ts:154:22)",
+              "Role.addToPrincipalPolicy (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-iam/lib/role.ts:368:28)",
+              "Function.addToPrincipal (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-iam/lib/grant.ts:168:61)",
+              "Function.addToPrincipalOrResource (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-iam/lib/grant.ts:119:26)",
+              "Import.grant (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecr/lib/repository.ts:228:22)",
+              "Import.grantPull (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecr/lib/repository.ts:241:22)",
+              "EcrImage.bind (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/images/ecr.ts:32:21)",
+              "new ContainerDefinition (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/container-definition.ts:408:36)",
+              "FargateTaskDefinition.addContainer (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/base/task-definition.ts:423:12)",
+              "new MediaStack (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/src/lib/media-stack.ts:50:50)",
+              "App (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:30:5)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:49:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/fs-asterisk-media/Service/Service": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ServiceD69D759B",
+            "trace": [
+              "new BaseService (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/base/base-service.ts:376:21)",
+              "new FargateService (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/fargate/fargate-service.ts:153:5)",
+              "new MediaStack (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/src/lib/media-stack.ts:67:25)",
+              "App (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:30:5)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:49:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/fs-asterisk-media/Service/SecurityGroup/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ServiceSecurityGroupC96ED6A7",
+            "trace": [
+              "new SecurityGroup (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ec2/lib/security-group.ts:402:26)",
+              "FargateService.configureAwsVpcNetworkingWithSecurityGroups (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/base/base-service.ts:664:25)",
+              "new FargateService (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/fargate/fargate-service.ts:173:10)",
+              "new MediaStack (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/src/lib/media-stack.ts:67:25)",
+              "App (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:30:5)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:49:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/fs-asterisk-media/Service/TaskCount/Target/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ServiceTaskCountTarget23E25614",
+            "trace": [
+              "new ScalableTarget (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-applicationautoscaling/lib/scalable-target.ts:122:22)",
+              "new BaseScalableAttribute (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-applicationautoscaling/lib/base-scalable-attribute.ts:56:19)",
+              "new ScalableTaskCount (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/base/scalable-task-count.ts:22:5)",
+              "FargateService.autoScaleTaskCount (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/base/base-service.ts:530:37)",
+              "new MediaStack (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/src/lib/media-stack.ts:74:17)",
+              "App (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:30:5)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:49:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/fs-asterisk-media/Service/TaskCount/Target/CpuScaling/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ServiceTaskCountTargetCpuScalingCC8A5DF6",
+            "trace": [
+              "new TargetTrackingScalingPolicy (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-applicationautoscaling/lib/target-tracking-scaling-policy.ts:139:22)",
+              "ScalableTarget.scaleToTrackMetric (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-applicationautoscaling/lib/scalable-target.ts:172:12)",
+              "ScalableTaskCount.doScaleToTrackMetric (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-applicationautoscaling/lib/base-scalable-attribute.ts:84:17)",
+              "ScalableTaskCount.scaleOnCpuUtilization (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/aws-ecs/lib/base/scalable-task-count.ts:43:18)",
+              "new MediaStack (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/src/lib/media-stack.ts:75:14)",
+              "App (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:30:5)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/bin/cdk.ts:49:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:973:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:813:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/fs-asterisk-media/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata",
+            "trace": [
+              "new MetadataResource (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/core/lib/private/metadata-resource.ts:51:24)",
+              "/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/core/lib/private/synthesis.ts:140:5",
+              "visit (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/core/lib/private/synthesis.ts:201:5)",
+              "visit (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/core/lib/private/synthesis.ts:197:5)",
+              "injectMetadataResources (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/core/lib/private/synthesis.ts:131:3)",
+              "Object.synthesize (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/core/lib/private/synthesis.ts:18:3)",
+              "App.synth (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/core/lib/stage.ts:188:23)",
+              "process.<anonymous> (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/@aws-cdk/core/lib/app.ts:123:45)",
+              "Object.onceWrapper (node:events:485:26)",
+              "process.emit (node:events:378:20)",
+              "process.EventEmitter.emit (node:domain:470:12)",
+              "process.emit (/Users/awest/code/github.com/fluentstream-sandbox/image-pipeline/node_modules/source-map-support/source-map-support.js:495:21)"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "missing": [
+    {
+      "key": "vpc-provider:account=319561458694:filter.vpc-id=vpc-5f9fb825:region=us-west-2:returnAsymmetricSubnets=true",
+      "provider": "vpc-provider",
+      "props": {
+        "account": "319561458694",
+        "region": "us-west-2",
+        "filter": {
+          "vpc-id": "vpc-5f9fb825"
+        },
+        "returnAsymmetricSubnets": true
+      }
+    }
+  ]
+}

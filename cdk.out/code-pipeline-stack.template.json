@@ -1,0 +1,844 @@
+{
+  "Description": "Deploys a code pipeline stack used for building the Asterisk media image and pushing it to ECR",
+  "Resources": {
+    "CodestarConnection": {
+      "Type": "AWS::CodeStarConnections::Connection",
+      "Properties": {
+        "ConnectionName": "super-awesome-connection",
+        "ProviderType": "GitHub"
+      },
+      "Metadata": {
+        "aws:cdk:path": "code-pipeline-stack/CodestarConnection"
+      }
+    },
+    "CodeBuildDeployRoleCA9DFA4F": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "codebuild.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "ManagedPolicyArns": [
+          "arn:aws:iam::aws:policy/AdministratorAccess"
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "code-pipeline-stack/CodeBuildDeployRole/Resource"
+      }
+    },
+    "CodeBuildDeployRoleDefaultPolicyCE41B84A": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+              ],
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":logs:us-west-2:658644317453:log-group:/aws/codebuild/",
+                      {
+                        "Ref": "AsteriskImageBuildproject41D0CCAF"
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":logs:us-west-2:658644317453:log-group:/aws/codebuild/",
+                      {
+                        "Ref": "AsteriskImageBuildproject41D0CCAF"
+                      },
+                      ":*"
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "Action": [
+                "codebuild:CreateReportGroup",
+                "codebuild:CreateReport",
+                "codebuild:UpdateReport",
+                "codebuild:BatchPutTestCases",
+                "codebuild:BatchPutCodeCoverages"
+              ],
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition"
+                    },
+                    ":codebuild:us-west-2:658644317453:report-group/",
+                    {
+                      "Ref": "AsteriskImageBuildproject41D0CCAF"
+                    },
+                    "-*"
+                  ]
+                ]
+              }
+            },
+            {
+              "Action": [
+                "s3:GetObject*",
+                "s3:GetBucket*",
+                "s3:List*"
+              ],
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "AsteristImageBuildpipelineArtifactsBucket3CE54D03",
+                    "Arn"
+                  ]
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      {
+                        "Fn::GetAtt": [
+                          "AsteristImageBuildpipelineArtifactsBucket3CE54D03",
+                          "Arn"
+                        ]
+                      },
+                      "/*"
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "Action": [
+                "kms:Decrypt",
+                "kms:DescribeKey"
+              ],
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "AsteristImageBuildpipelineArtifactsBucketEncryptionKey1F4E0A24",
+                  "Arn"
+                ]
+              }
+            },
+            {
+              "Action": [
+                "kms:Decrypt",
+                "kms:Encrypt",
+                "kms:ReEncrypt*",
+                "kms:GenerateDataKey*"
+              ],
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "AsteristImageBuildpipelineArtifactsBucketEncryptionKey1F4E0A24",
+                  "Arn"
+                ]
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "CodeBuildDeployRoleDefaultPolicyCE41B84A",
+        "Roles": [
+          {
+            "Ref": "CodeBuildDeployRoleCA9DFA4F"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "code-pipeline-stack/CodeBuildDeployRole/DefaultPolicy/Resource"
+      }
+    },
+    "AsteriskImageBuildproject41D0CCAF": {
+      "Type": "AWS::CodeBuild::Project",
+      "Properties": {
+        "Artifacts": {
+          "Type": "CODEPIPELINE"
+        },
+        "Environment": {
+          "ComputeType": "BUILD_GENERAL1_SMALL",
+          "EnvironmentVariables": [
+            {
+              "Name": "AWS_DEFAULT_REGION",
+              "Type": "PLAINTEXT",
+              "Value": "us-west-2"
+            }
+          ],
+          "Image": "aws/codebuild/standard:3.0",
+          "ImagePullCredentialsType": "CODEBUILD",
+          "PrivilegedMode": false,
+          "Type": "LINUX_CONTAINER"
+        },
+        "ServiceRole": {
+          "Fn::GetAtt": [
+            "CodeBuildDeployRoleCA9DFA4F",
+            "Arn"
+          ]
+        },
+        "Source": {
+          "BuildSpec": "./buildspec/buildspec-deploy.yml",
+          "Type": "CODEPIPELINE"
+        },
+        "EncryptionKey": {
+          "Fn::GetAtt": [
+            "AsteristImageBuildpipelineArtifactsBucketEncryptionKey1F4E0A24",
+            "Arn"
+          ]
+        },
+        "Name": "AsteriskImageBuild-project"
+      },
+      "Metadata": {
+        "aws:cdk:path": "code-pipeline-stack/AsteriskImageBuild-project/Resource"
+      }
+    },
+    "AsteristImageBuildpipelineArtifactsBucketEncryptionKey1F4E0A24": {
+      "Type": "AWS::KMS::Key",
+      "Properties": {
+        "KeyPolicy": {
+          "Statement": [
+            {
+              "Action": [
+                "kms:Create*",
+                "kms:Describe*",
+                "kms:Enable*",
+                "kms:List*",
+                "kms:Put*",
+                "kms:Update*",
+                "kms:Revoke*",
+                "kms:Disable*",
+                "kms:Get*",
+                "kms:Delete*",
+                "kms:ScheduleKeyDeletion",
+                "kms:CancelKeyDeletion",
+                "kms:GenerateDataKey",
+                "kms:TagResource",
+                "kms:UntagResource"
+              ],
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":iam::658644317453:root"
+                    ]
+                  ]
+                }
+              },
+              "Resource": "*"
+            },
+            {
+              "Action": [
+                "kms:Decrypt",
+                "kms:DescribeKey",
+                "kms:Encrypt",
+                "kms:ReEncrypt*",
+                "kms:GenerateDataKey*"
+              ],
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": {
+                  "Fn::GetAtt": [
+                    "AsteristImageBuildpipelineRole7C2A47E0",
+                    "Arn"
+                  ]
+                }
+              },
+              "Resource": "*"
+            },
+            {
+              "Action": [
+                "kms:Decrypt",
+                "kms:DescribeKey",
+                "kms:Encrypt",
+                "kms:ReEncrypt*",
+                "kms:GenerateDataKey*"
+              ],
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": {
+                  "Fn::GetAtt": [
+                    "AsteristImageBuildpipelineGitHubSourcestageGitHubCodePipelineActionRoleF7FE3648",
+                    "Arn"
+                  ]
+                }
+              },
+              "Resource": "*"
+            },
+            {
+              "Action": [
+                "kms:Decrypt",
+                "kms:DescribeKey"
+              ],
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": {
+                  "Fn::GetAtt": [
+                    "CodeBuildDeployRoleCA9DFA4F",
+                    "Arn"
+                  ]
+                }
+              },
+              "Resource": "*"
+            },
+            {
+              "Action": [
+                "kms:Decrypt",
+                "kms:Encrypt",
+                "kms:ReEncrypt*",
+                "kms:GenerateDataKey*"
+              ],
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": {
+                  "Fn::GetAtt": [
+                    "CodeBuildDeployRoleCA9DFA4F",
+                    "Arn"
+                  ]
+                }
+              },
+              "Resource": "*"
+            }
+          ],
+          "Version": "2012-10-17"
+        }
+      },
+      "UpdateReplacePolicy": "Delete",
+      "DeletionPolicy": "Delete",
+      "Metadata": {
+        "aws:cdk:path": "code-pipeline-stack/AsteristImageBuild-pipeline/ArtifactsBucketEncryptionKey/Resource"
+      }
+    },
+    "AsteristImageBuildpipelineArtifactsBucketEncryptionKeyAlias886AE7DB": {
+      "Type": "AWS::KMS::Alias",
+      "Properties": {
+        "AliasName": "alias/codepipeline-codepipelinestackasteristimagebuildpipeline8327e7e9",
+        "TargetKeyId": {
+          "Fn::GetAtt": [
+            "AsteristImageBuildpipelineArtifactsBucketEncryptionKey1F4E0A24",
+            "Arn"
+          ]
+        }
+      },
+      "UpdateReplacePolicy": "Delete",
+      "DeletionPolicy": "Delete",
+      "Metadata": {
+        "aws:cdk:path": "code-pipeline-stack/AsteristImageBuild-pipeline/ArtifactsBucketEncryptionKeyAlias/Resource"
+      }
+    },
+    "AsteristImageBuildpipelineArtifactsBucket3CE54D03": {
+      "Type": "AWS::S3::Bucket",
+      "Properties": {
+        "BucketEncryption": {
+          "ServerSideEncryptionConfiguration": [
+            {
+              "ServerSideEncryptionByDefault": {
+                "KMSMasterKeyID": {
+                  "Fn::GetAtt": [
+                    "AsteristImageBuildpipelineArtifactsBucketEncryptionKey1F4E0A24",
+                    "Arn"
+                  ]
+                },
+                "SSEAlgorithm": "aws:kms"
+              }
+            }
+          ]
+        },
+        "PublicAccessBlockConfiguration": {
+          "BlockPublicAcls": true,
+          "BlockPublicPolicy": true,
+          "IgnorePublicAcls": true,
+          "RestrictPublicBuckets": true
+        }
+      },
+      "UpdateReplacePolicy": "Retain",
+      "DeletionPolicy": "Retain",
+      "Metadata": {
+        "aws:cdk:path": "code-pipeline-stack/AsteristImageBuild-pipeline/ArtifactsBucket/Resource"
+      }
+    },
+    "AsteristImageBuildpipelineRole7C2A47E0": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "codepipeline.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "code-pipeline-stack/AsteristImageBuild-pipeline/Role/Resource"
+      }
+    },
+    "AsteristImageBuildpipelineRoleDefaultPolicy8D5E8E8B": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "s3:GetObject*",
+                "s3:GetBucket*",
+                "s3:List*",
+                "s3:DeleteObject*",
+                "s3:PutObject*",
+                "s3:Abort*"
+              ],
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "AsteristImageBuildpipelineArtifactsBucket3CE54D03",
+                    "Arn"
+                  ]
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      {
+                        "Fn::GetAtt": [
+                          "AsteristImageBuildpipelineArtifactsBucket3CE54D03",
+                          "Arn"
+                        ]
+                      },
+                      "/*"
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "Action": [
+                "kms:Decrypt",
+                "kms:DescribeKey",
+                "kms:Encrypt",
+                "kms:ReEncrypt*",
+                "kms:GenerateDataKey*"
+              ],
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "AsteristImageBuildpipelineArtifactsBucketEncryptionKey1F4E0A24",
+                  "Arn"
+                ]
+              }
+            },
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "AsteristImageBuildpipelineGitHubSourcestageGitHubCodePipelineActionRoleF7FE3648",
+                  "Arn"
+                ]
+              }
+            },
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "AsteristImageBuildpipelineAsteriskImageDeploystageBuildApprovalActionCodePipelineActionRole6FDC6675",
+                  "Arn"
+                ]
+              }
+            },
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "AsteristImageBuildpipelineAsteriskImageDeploystageAsteriskContainerBuildActionCodePipelineActionRole18510C25",
+                  "Arn"
+                ]
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "AsteristImageBuildpipelineRoleDefaultPolicy8D5E8E8B",
+        "Roles": [
+          {
+            "Ref": "AsteristImageBuildpipelineRole7C2A47E0"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "code-pipeline-stack/AsteristImageBuild-pipeline/Role/DefaultPolicy/Resource"
+      }
+    },
+    "AsteristImageBuildpipelineAE06494F": {
+      "Type": "AWS::CodePipeline::Pipeline",
+      "Properties": {
+        "RoleArn": {
+          "Fn::GetAtt": [
+            "AsteristImageBuildpipelineRole7C2A47E0",
+            "Arn"
+          ]
+        },
+        "Stages": [
+          {
+            "Actions": [
+              {
+                "ActionTypeId": {
+                  "Category": "Source",
+                  "Owner": "AWS",
+                  "Provider": "CodeStarSourceConnection",
+                  "Version": "1"
+                },
+                "Configuration": {
+                  "ConnectionArn": {
+                    "Fn::GetAtt": [
+                      "CodestarConnection",
+                      "ConnectionArn"
+                    ]
+                  },
+                  "FullRepositoryId": "aphexlog/dog",
+                  "BranchName": "master"
+                },
+                "Name": "GitHub",
+                "OutputArtifacts": [
+                  {
+                    "Name": "Artifact_GitHubSource-stage_GitHub"
+                  }
+                ],
+                "RoleArn": {
+                  "Fn::GetAtt": [
+                    "AsteristImageBuildpipelineGitHubSourcestageGitHubCodePipelineActionRoleF7FE3648",
+                    "Arn"
+                  ]
+                },
+                "RunOrder": 1
+              }
+            ],
+            "Name": "GitHubSource-stage"
+          },
+          {
+            "Actions": [
+              {
+                "ActionTypeId": {
+                  "Category": "Approval",
+                  "Owner": "AWS",
+                  "Provider": "Manual",
+                  "Version": "1"
+                },
+                "Name": "BuildApprovalAction",
+                "RoleArn": {
+                  "Fn::GetAtt": [
+                    "AsteristImageBuildpipelineAsteriskImageDeploystageBuildApprovalActionCodePipelineActionRole6FDC6675",
+                    "Arn"
+                  ]
+                },
+                "RunOrder": 2
+              },
+              {
+                "ActionTypeId": {
+                  "Category": "Build",
+                  "Owner": "AWS",
+                  "Provider": "CodeBuild",
+                  "Version": "1"
+                },
+                "Configuration": {
+                  "ProjectName": {
+                    "Ref": "AsteriskImageBuildproject41D0CCAF"
+                  }
+                },
+                "InputArtifacts": [
+                  {
+                    "Name": "Artifact_GitHubSource-stage_GitHub"
+                  }
+                ],
+                "Name": "AsteriskContainerBuildAction",
+                "RoleArn": {
+                  "Fn::GetAtt": [
+                    "AsteristImageBuildpipelineAsteriskImageDeploystageAsteriskContainerBuildActionCodePipelineActionRole18510C25",
+                    "Arn"
+                  ]
+                },
+                "RunOrder": 3
+              }
+            ],
+            "Name": "AsteriskImageDeploy-stage"
+          }
+        ],
+        "ArtifactStore": {
+          "EncryptionKey": {
+            "Id": {
+              "Fn::GetAtt": [
+                "AsteristImageBuildpipelineArtifactsBucketEncryptionKey1F4E0A24",
+                "Arn"
+              ]
+            },
+            "Type": "KMS"
+          },
+          "Location": {
+            "Ref": "AsteristImageBuildpipelineArtifactsBucket3CE54D03"
+          },
+          "Type": "S3"
+        },
+        "Name": "AsteriskImageBuild-pipeline"
+      },
+      "DependsOn": [
+        "AsteristImageBuildpipelineRoleDefaultPolicy8D5E8E8B",
+        "AsteristImageBuildpipelineRole7C2A47E0"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "code-pipeline-stack/AsteristImageBuild-pipeline/Resource"
+      }
+    },
+    "AsteristImageBuildpipelineGitHubSourcestageGitHubCodePipelineActionRoleF7FE3648": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":iam::658644317453:root"
+                    ]
+                  ]
+                }
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "code-pipeline-stack/AsteristImageBuild-pipeline/GitHubSource-stage/GitHub/CodePipelineActionRole/Resource"
+      }
+    },
+    "AsteristImageBuildpipelineGitHubSourcestageGitHubCodePipelineActionRoleDefaultPolicy132D1265": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": "codestar-connections:UseConnection",
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "CodestarConnection",
+                  "ConnectionArn"
+                ]
+              }
+            },
+            {
+              "Action": [
+                "s3:GetObject*",
+                "s3:GetBucket*",
+                "s3:List*",
+                "s3:DeleteObject*",
+                "s3:PutObject*",
+                "s3:Abort*"
+              ],
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "AsteristImageBuildpipelineArtifactsBucket3CE54D03",
+                    "Arn"
+                  ]
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      {
+                        "Fn::GetAtt": [
+                          "AsteristImageBuildpipelineArtifactsBucket3CE54D03",
+                          "Arn"
+                        ]
+                      },
+                      "/*"
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "Action": [
+                "kms:Decrypt",
+                "kms:DescribeKey",
+                "kms:Encrypt",
+                "kms:ReEncrypt*",
+                "kms:GenerateDataKey*"
+              ],
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "AsteristImageBuildpipelineArtifactsBucketEncryptionKey1F4E0A24",
+                  "Arn"
+                ]
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "AsteristImageBuildpipelineGitHubSourcestageGitHubCodePipelineActionRoleDefaultPolicy132D1265",
+        "Roles": [
+          {
+            "Ref": "AsteristImageBuildpipelineGitHubSourcestageGitHubCodePipelineActionRoleF7FE3648"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "code-pipeline-stack/AsteristImageBuild-pipeline/GitHubSource-stage/GitHub/CodePipelineActionRole/DefaultPolicy/Resource"
+      }
+    },
+    "AsteristImageBuildpipelineAsteriskImageDeploystageBuildApprovalActionCodePipelineActionRole6FDC6675": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":iam::658644317453:root"
+                    ]
+                  ]
+                }
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "code-pipeline-stack/AsteristImageBuild-pipeline/AsteriskImageDeploy-stage/BuildApprovalAction/CodePipelineActionRole/Resource"
+      }
+    },
+    "AsteristImageBuildpipelineAsteriskImageDeploystageAsteriskContainerBuildActionCodePipelineActionRole18510C25": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":iam::658644317453:root"
+                    ]
+                  ]
+                }
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "code-pipeline-stack/AsteristImageBuild-pipeline/AsteriskImageDeploy-stage/AsteriskContainerBuildAction/CodePipelineActionRole/Resource"
+      }
+    },
+    "AsteristImageBuildpipelineAsteriskImageDeploystageAsteriskContainerBuildActionCodePipelineActionRoleDefaultPolicy59A7D8EA": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "codebuild:BatchGetBuilds",
+                "codebuild:StartBuild",
+                "codebuild:StopBuild"
+              ],
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "AsteriskImageBuildproject41D0CCAF",
+                  "Arn"
+                ]
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "AsteristImageBuildpipelineAsteriskImageDeploystageAsteriskContainerBuildActionCodePipelineActionRoleDefaultPolicy59A7D8EA",
+        "Roles": [
+          {
+            "Ref": "AsteristImageBuildpipelineAsteriskImageDeploystageAsteriskContainerBuildActionCodePipelineActionRole18510C25"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "code-pipeline-stack/AsteristImageBuild-pipeline/AsteriskImageDeploy-stage/AsteriskContainerBuildAction/CodePipelineActionRole/DefaultPolicy/Resource"
+      }
+    },
+    "CDKMetadata": {
+      "Type": "AWS::CDK::Metadata",
+      "Properties": {
+        "Modules": "aws-cdk=1.90.0,@aws-cdk/assets=1.91.0,@aws-cdk/aws-applicationautoscaling=1.91.0,@aws-cdk/aws-autoscaling=1.91.0,@aws-cdk/aws-autoscaling-common=1.91.0,@aws-cdk/aws-autoscaling-hooktargets=1.91.0,@aws-cdk/aws-cloudformation=1.91.0,@aws-cdk/aws-cloudwatch=1.91.0,@aws-cdk/aws-codebuild=1.91.0,@aws-cdk/aws-codeguruprofiler=1.91.0,@aws-cdk/aws-codepipeline=1.91.0,@aws-cdk/aws-codepipeline-actions=1.91.0,@aws-cdk/aws-codestarconnections=1.91.0,@aws-cdk/aws-ec2=1.91.0,@aws-cdk/aws-ecr=1.91.0,@aws-cdk/aws-ecr-assets=1.91.0,@aws-cdk/aws-ecs=1.91.0,@aws-cdk/aws-elasticloadbalancingv2=1.91.0,@aws-cdk/aws-events=1.91.0,@aws-cdk/aws-events-targets=1.91.0,@aws-cdk/aws-iam=1.91.0,@aws-cdk/aws-kms=1.91.0,@aws-cdk/aws-lambda=1.91.0,@aws-cdk/aws-logs=1.91.0,@aws-cdk/aws-s3=1.91.0,@aws-cdk/aws-s3-assets=1.91.0,@aws-cdk/aws-servicediscovery=1.91.0,@aws-cdk/aws-sns=1.91.0,@aws-cdk/aws-sns-subscriptions=1.91.0,@aws-cdk/aws-sqs=1.91.0,@aws-cdk/aws-ssm=1.91.0,@aws-cdk/cloud-assembly-schema=1.91.0,@aws-cdk/core=1.91.0,@aws-cdk/custom-resources=1.91.0,@aws-cdk/cx-api=1.91.0,@aws-cdk/region-info=1.91.0,jsii-runtime=node.js/v15.8.0"
+      },
+      "Metadata": {
+        "aws:cdk:path": "code-pipeline-stack/CDKMetadata/Default"
+      }
+    }
+  }
+}

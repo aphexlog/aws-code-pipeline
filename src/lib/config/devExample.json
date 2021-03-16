@@ -1,0 +1,9 @@
+{
+    "development": {
+        "accountId": "account id here",
+        "vpcId": "vpc id here",
+        "region": "region here",
+        "stackName": "stack name here",
+        "IP": "IP address here so we can test out security groups."
+    }
+}

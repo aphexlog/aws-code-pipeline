@@ -1,0 +1,15 @@
+{
+    "aws": {
+        "accountId": "319561458694",
+        "region": "us-west-2",
+        "stackName": "AsteriskMedia",
+        "vpc_id": "vpc-5f9fb825",
+        "image_repo_name": "test-repo",
+        "image_repo_tag": "latest"
+    },
+    "github": {
+        "repo": "asterisk-media",
+        "branch": "main",
+        "owner": "aphexlog"
+    }
+}

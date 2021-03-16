@@ -1,0 +1,995 @@
+{
+  "Description": "Deploys a container from an ECR image repository into an ECS Cluster",
+  "Resources": {
+    "ClusterEB0386A7": {
+      "Type": "AWS::ECS::Cluster",
+      "Properties": {
+        "ClusterName": {
+          "Ref": "AWS::StackName"
+        },
+        "ClusterSettings": [
+          {
+            "Name": "containerInsights",
+            "Value": "enabled"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "fs-asterisk-media/Cluster/Resource"
+      }
+    },
+    "ClusterAutoScalingGroupInstanceSecurityGroupEFE9207E": {
+      "Type": "AWS::EC2::SecurityGroup",
+      "Properties": {
+        "GroupDescription": "fs-asterisk-media/Cluster/AutoScalingGroup/InstanceSecurityGroup",
+        "SecurityGroupEgress": [
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow all outbound traffic by default",
+            "IpProtocol": "-1"
+          }
+        ],
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "fs-asterisk-media/Cluster/AutoScalingGroup"
+          }
+        ],
+        "VpcId": "vpc-12345"
+      },
+      "Metadata": {
+        "aws:cdk:path": "fs-asterisk-media/Cluster/AutoScalingGroup/InstanceSecurityGroup/Resource"
+      }
+    },
+    "ClusterAutoScalingGroupInstanceRoleFF996623": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "ec2.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/AmazonSSMManagedInstanceCore"
+              ]
+            ]
+          }
+        ],
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "fs-asterisk-media/Cluster/AutoScalingGroup"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "fs-asterisk-media/Cluster/AutoScalingGroup/InstanceRole/Resource"
+      }
+    },
+    "ClusterAutoScalingGroupInstanceRoleDefaultPolicy2F28E70E": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "ecs:DeregisterContainerInstance",
+                "ecs:RegisterContainerInstance",
+                "ecs:Submit*"
+              ],
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "ClusterEB0386A7",
+                  "Arn"
+                ]
+              }
+            },
+            {
+              "Action": [
+                "ecs:Poll",
+                "ecs:StartTelemetrySession"
+              ],
+              "Condition": {
+                "ArnEquals": {
+                  "ecs:cluster": {
+                    "Fn::GetAtt": [
+                      "ClusterEB0386A7",
+                      "Arn"
+                    ]
+                  }
+                }
+              },
+              "Effect": "Allow",
+              "Resource": "*"
+            },
+            {
+              "Action": [
+                "ecs:DiscoverPollEndpoint",
+                "ecr:GetAuthorizationToken",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+              ],
+              "Effect": "Allow",
+              "Resource": "*"
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "ClusterAutoScalingGroupInstanceRoleDefaultPolicy2F28E70E",
+        "Roles": [
+          {
+            "Ref": "ClusterAutoScalingGroupInstanceRoleFF996623"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "fs-asterisk-media/Cluster/AutoScalingGroup/InstanceRole/DefaultPolicy/Resource"
+      }
+    },
+    "ClusterAutoScalingGroupInstanceProfileF796E806": {
+      "Type": "AWS::IAM::InstanceProfile",
+      "Properties": {
+        "Roles": [
+          {
+            "Ref": "ClusterAutoScalingGroupInstanceRoleFF996623"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "fs-asterisk-media/Cluster/AutoScalingGroup/InstanceProfile"
+      }
+    },
+    "ClusterAutoScalingGroupLaunchConfig6C0C8B5B": {
+      "Type": "AWS::AutoScaling::LaunchConfiguration",
+      "Properties": {
+        "ImageId": {
+          "Ref": "SsmParameterValueawsserviceecsoptimizedamiamazonlinux2recommendedimageidC96584B6F00A464EAD1953AFF4B05118Parameter"
+        },
+        "InstanceType": "t2.micro",
+        "AssociatePublicIpAddress": false,
+        "IamInstanceProfile": {
+          "Ref": "ClusterAutoScalingGroupInstanceProfileF796E806"
+        },
+        "SecurityGroups": [
+          {
+            "Fn::GetAtt": [
+              "ClusterAutoScalingGroupInstanceSecurityGroupEFE9207E",
+              "GroupId"
+            ]
+          }
+        ],
+        "UserData": {
+          "Fn::Base64": {
+            "Fn::Join": [
+              "",
+              [
+                "#!/bin/bash\necho ECS_CLUSTER=",
+                {
+                  "Ref": "ClusterEB0386A7"
+                },
+                " >> /etc/ecs/ecs.config"
+              ]
+            ]
+          }
+        }
+      },
+      "DependsOn": [
+        "ClusterAutoScalingGroupInstanceRoleDefaultPolicy2F28E70E",
+        "ClusterAutoScalingGroupInstanceRoleFF996623"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "fs-asterisk-media/Cluster/AutoScalingGroup/LaunchConfig"
+      }
+    },
+    "ClusterAutoScalingGroupASG8FBA5099": {
+      "Type": "AWS::AutoScaling::AutoScalingGroup",
+      "Properties": {
+        "MaxSize": "2",
+        "MinSize": "1",
+        "AutoScalingGroupName": {
+          "Fn::Join": [
+            "",
+            [
+              {
+                "Ref": "AWS::StackName"
+              },
+              "-ASG"
+            ]
+          ]
+        },
+        "DesiredCapacity": "1",
+        "LaunchConfigurationName": {
+          "Ref": "ClusterAutoScalingGroupLaunchConfig6C0C8B5B"
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "PropagateAtLaunch": true,
+            "Value": "fs-asterisk-media/Cluster/AutoScalingGroup"
+          }
+        ],
+        "VPCZoneIdentifier": [
+          "p-12345",
+          "p-67890"
+        ]
+      },
+      "UpdatePolicy": {
+        "AutoScalingReplacingUpdate": {
+          "WillReplace": true
+        },
+        "AutoScalingScheduledAction": {
+          "IgnoreUnmodifiedGroupSizeProperties": true
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "fs-asterisk-media/Cluster/AutoScalingGroup/ASG"
+      }
+    },
+    "ClusterAutoScalingGroupDrainECSHookFunctionServiceRole57B0BAC7": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+              ]
+            ]
+          }
+        ],
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "fs-asterisk-media/Cluster/AutoScalingGroup"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "fs-asterisk-media/Cluster/AutoScalingGroup/DrainECSHook/Function/ServiceRole/Resource"
+      }
+    },
+    "ClusterAutoScalingGroupDrainECSHookFunctionServiceRoleDefaultPolicy68C0A46A": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "ec2:DescribeInstances",
+                "ec2:DescribeInstanceAttribute",
+                "ec2:DescribeInstanceStatus",
+                "ec2:DescribeHosts"
+              ],
+              "Effect": "Allow",
+              "Resource": "*"
+            },
+            {
+              "Action": "autoscaling:CompleteLifecycleAction",
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition"
+                    },
+                    ":autoscaling:us-west-2:319561458694:autoScalingGroup:*:autoScalingGroupName/",
+                    {
+                      "Ref": "ClusterAutoScalingGroupASG8FBA5099"
+                    }
+                  ]
+                ]
+              }
+            },
+            {
+              "Action": [
+                "ecs:DescribeContainerInstances",
+                "ecs:DescribeTasks"
+              ],
+              "Condition": {
+                "ArnEquals": {
+                  "ecs:cluster": {
+                    "Fn::GetAtt": [
+                      "ClusterEB0386A7",
+                      "Arn"
+                    ]
+                  }
+                }
+              },
+              "Effect": "Allow",
+              "Resource": "*"
+            },
+            {
+              "Action": [
+                "ecs:ListContainerInstances",
+                "ecs:SubmitContainerStateChange",
+                "ecs:SubmitTaskStateChange"
+              ],
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "ClusterEB0386A7",
+                  "Arn"
+                ]
+              }
+            },
+            {
+              "Action": [
+                "ecs:UpdateContainerInstancesState",
+                "ecs:ListTasks"
+              ],
+              "Condition": {
+                "ArnEquals": {
+                  "ecs:cluster": {
+                    "Fn::GetAtt": [
+                      "ClusterEB0386A7",
+                      "Arn"
+                    ]
+                  }
+                }
+              },
+              "Effect": "Allow",
+              "Resource": "*"
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "ClusterAutoScalingGroupDrainECSHookFunctionServiceRoleDefaultPolicy68C0A46A",
+        "Roles": [
+          {
+            "Ref": "ClusterAutoScalingGroupDrainECSHookFunctionServiceRole57B0BAC7"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "fs-asterisk-media/Cluster/AutoScalingGroup/DrainECSHook/Function/ServiceRole/DefaultPolicy/Resource"
+      }
+    },
+    "ClusterAutoScalingGroupDrainECSHookFunction3B9A0374": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "ZipFile": "import boto3, json, os, time\n\necs = boto3.client('ecs')\nautoscaling = boto3.client('autoscaling')\n\n\ndef lambda_handler(event, context):\n  print(json.dumps(event))\n  cluster = os.environ['CLUSTER']\n  snsTopicArn = event['Records'][0]['Sns']['TopicArn']\n  lifecycle_event = json.loads(event['Records'][0]['Sns']['Message'])\n  instance_id = lifecycle_event.get('EC2InstanceId')\n  if not instance_id:\n    print('Got event without EC2InstanceId: %s', json.dumps(event))\n    return\n\n  instance_arn = container_instance_arn(cluster, instance_id)\n  print('Instance %s has container instance ARN %s' % (lifecycle_event['EC2InstanceId'], instance_arn))\n\n  if not instance_arn:\n    return\n\n  while has_tasks(cluster, instance_arn):\n    time.sleep(10)\n\n  try:\n    print('Terminating instance %s' % instance_id)\n    autoscaling.complete_lifecycle_action(\n        LifecycleActionResult='CONTINUE',\n        **pick(lifecycle_event, 'LifecycleHookName', 'LifecycleActionToken', 'AutoScalingGroupName'))\n  except Exception as e:\n    # Lifecycle action may have already completed.\n    print(str(e))\n\n\ndef container_instance_arn(cluster, instance_id):\n  \"\"\"Turn an instance ID into a container instance ARN.\"\"\"\n  arns = ecs.list_container_instances(cluster=cluster, filter='ec2InstanceId==' + instance_id)['containerInstanceArns']\n  if not arns:\n    return None\n  return arns[0]\n\n\ndef has_tasks(cluster, instance_arn):\n  \"\"\"Return True if the instance is running tasks for the given cluster.\"\"\"\n  instances = ecs.describe_container_instances(cluster=cluster, containerInstances=[instance_arn])['containerInstances']\n  if not instances:\n    return False\n  instance = instances[0]\n\n  if instance['status'] == 'ACTIVE':\n    # Start draining, then try again later\n    set_container_instance_to_draining(cluster, instance_arn)\n    return True\n\n  tasks = instance['runningTasksCount'] + instance['pendingTasksCount']\n  print('Instance %s has %s tasks' % (instance_arn, tasks))\n\n  return tasks > 0\n\n\ndef set_container_instance_to_draining(cluster, instance_arn):\n  ecs.update_container_instances_state(\n      cluster=cluster,\n      containerInstances=[instance_arn], status='DRAINING')\n\n\ndef pick(dct, *keys):\n  \"\"\"Pick a subset of a dict.\"\"\"\n  return {k: v for k, v in dct.items() if k in keys}\n"
+        },
+        "Role": {
+          "Fn::GetAtt": [
+            "ClusterAutoScalingGroupDrainECSHookFunctionServiceRole57B0BAC7",
+            "Arn"
+          ]
+        },
+        "Environment": {
+          "Variables": {
+            "CLUSTER": {
+              "Ref": "ClusterEB0386A7"
+            }
+          }
+        },
+        "Handler": "index.lambda_handler",
+        "Runtime": "python3.6",
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "fs-asterisk-media/Cluster/AutoScalingGroup"
+          }
+        ],
+        "Timeout": 310
+      },
+      "DependsOn": [
+        "ClusterAutoScalingGroupDrainECSHookFunctionServiceRoleDefaultPolicy68C0A46A",
+        "ClusterAutoScalingGroupDrainECSHookFunctionServiceRole57B0BAC7"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "fs-asterisk-media/Cluster/AutoScalingGroup/DrainECSHook/Function/Resource"
+      }
+    },
+    "ClusterAutoScalingGroupDrainECSHookFunctionAllowInvokefsasteriskmediaClusterAutoScalingGroupLifecycleHookDrainHookTopic67B270638C18A898": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "ClusterAutoScalingGroupDrainECSHookFunction3B9A0374",
+            "Arn"
+          ]
+        },
+        "Principal": "sns.amazonaws.com",
+        "SourceArn": {
+          "Ref": "ClusterAutoScalingGroupLifecycleHookDrainHookTopicF7EAE279"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "fs-asterisk-media/Cluster/AutoScalingGroup/DrainECSHook/Function/AllowInvoke:fsasteriskmediaClusterAutoScalingGroupLifecycleHookDrainHookTopic67B27063"
+      }
+    },
+    "ClusterAutoScalingGroupDrainECSHookFunctionTopic32FF6F7C": {
+      "Type": "AWS::SNS::Subscription",
+      "Properties": {
+        "Protocol": "lambda",
+        "TopicArn": {
+          "Ref": "ClusterAutoScalingGroupLifecycleHookDrainHookTopicF7EAE279"
+        },
+        "Endpoint": {
+          "Fn::GetAtt": [
+            "ClusterAutoScalingGroupDrainECSHookFunction3B9A0374",
+            "Arn"
+          ]
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "fs-asterisk-media/Cluster/AutoScalingGroup/DrainECSHook/Function/Topic/Resource"
+      }
+    },
+    "ClusterAutoScalingGroupLifecycleHookDrainHookRoleC77C78EE": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "autoscaling.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "fs-asterisk-media/Cluster/AutoScalingGroup"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "fs-asterisk-media/Cluster/AutoScalingGroup/LifecycleHookDrainHook/Role/Resource"
+      }
+    },
+    "ClusterAutoScalingGroupLifecycleHookDrainHookRoleDefaultPolicy7EBAED85": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sns:Publish",
+              "Effect": "Allow",
+              "Resource": {
+                "Ref": "ClusterAutoScalingGroupLifecycleHookDrainHookTopicF7EAE279"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "ClusterAutoScalingGroupLifecycleHookDrainHookRoleDefaultPolicy7EBAED85",
+        "Roles": [
+          {
+            "Ref": "ClusterAutoScalingGroupLifecycleHookDrainHookRoleC77C78EE"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "fs-asterisk-media/Cluster/AutoScalingGroup/LifecycleHookDrainHook/Role/DefaultPolicy/Resource"
+      }
+    },
+    "ClusterAutoScalingGroupLifecycleHookDrainHookTopicF7EAE279": {
+      "Type": "AWS::SNS::Topic",
+      "Properties": {
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "fs-asterisk-media/Cluster/AutoScalingGroup"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "fs-asterisk-media/Cluster/AutoScalingGroup/LifecycleHookDrainHook/Topic/Resource"
+      }
+    },
+    "ClusterAutoScalingGroupLifecycleHookDrainHookF53E2057": {
+      "Type": "AWS::AutoScaling::LifecycleHook",
+      "Properties": {
+        "AutoScalingGroupName": {
+          "Ref": "ClusterAutoScalingGroupASG8FBA5099"
+        },
+        "LifecycleTransition": "autoscaling:EC2_INSTANCE_TERMINATING",
+        "DefaultResult": "CONTINUE",
+        "HeartbeatTimeout": 300,
+        "NotificationTargetARN": {
+          "Ref": "ClusterAutoScalingGroupLifecycleHookDrainHookTopicF7EAE279"
+        },
+        "RoleARN": {
+          "Fn::GetAtt": [
+            "ClusterAutoScalingGroupLifecycleHookDrainHookRoleC77C78EE",
+            "Arn"
+          ]
+        }
+      },
+      "DependsOn": [
+        "ClusterAutoScalingGroupLifecycleHookDrainHookRoleDefaultPolicy7EBAED85",
+        "ClusterAutoScalingGroupLifecycleHookDrainHookRoleC77C78EE"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "fs-asterisk-media/Cluster/AutoScalingGroup/LifecycleHookDrainHook/Resource"
+      }
+    },
+    "TaskDefinitionTaskRoleFD40A61D": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "ecs-tasks.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "fs-asterisk-media/TaskDefinition/TaskRole/Resource"
+      }
+    },
+    "TaskDefinitionTaskRoleDefaultPolicy282E8624": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": "ecs:DescribeTasks",
+              "Effect": "Allow",
+              "Resource": {
+                "Ref": "TaskDefinitionB36D86D9"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "TaskDefinitionTaskRoleDefaultPolicy282E8624",
+        "Roles": [
+          {
+            "Ref": "TaskDefinitionTaskRoleFD40A61D"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "fs-asterisk-media/TaskDefinition/TaskRole/DefaultPolicy/Resource"
+      }
+    },
+    "TaskDefinitionB36D86D9": {
+      "Type": "AWS::ECS::TaskDefinition",
+      "Properties": {
+        "ContainerDefinitions": [
+          {
+            "Essential": true,
+            "Image": {
+              "Fn::Join": [
+                "",
+                [
+                  {
+                    "Ref": "AWS::AccountId"
+                  },
+                  ".dkr.ecr.",
+                  {
+                    "Ref": "AWS::Region"
+                  },
+                  ".",
+                  {
+                    "Ref": "AWS::URLSuffix"
+                  },
+                  "/test-repo:latest"
+                ]
+              ]
+            },
+            "LogConfiguration": {
+              "LogDriver": "awslogs",
+              "Options": {
+                "awslogs-group": {
+                  "Ref": "TaskDefinitionAsteriskContainerLogGroupCC3973E7"
+                },
+                "awslogs-stream-prefix": {
+                  "Ref": "AWS::StackName"
+                },
+                "awslogs-region": "us-west-2"
+              }
+            },
+            "Memory": 512,
+            "Name": "AsteriskContainer",
+            "PortMappings": [
+              {
+                "ContainerPort": 5060,
+                "HostPort": 5060,
+                "Protocol": "udp"
+              }
+            ]
+          }
+        ],
+        "Cpu": "256",
+        "ExecutionRoleArn": {
+          "Fn::GetAtt": [
+            "TaskDefinitionExecutionRole8D61C2FB",
+            "Arn"
+          ]
+        },
+        "Family": "AsteriskMedia",
+        "Memory": "512",
+        "NetworkMode": "awsvpc",
+        "RequiresCompatibilities": [
+          "FARGATE"
+        ],
+        "TaskRoleArn": {
+          "Fn::GetAtt": [
+            "TaskDefinitionTaskRoleFD40A61D",
+            "Arn"
+          ]
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "fs-asterisk-media/TaskDefinition/Resource"
+      }
+    },
+    "TaskDefinitionAsteriskContainerLogGroupCC3973E7": {
+      "Type": "AWS::Logs::LogGroup",
+      "UpdateReplacePolicy": "Retain",
+      "DeletionPolicy": "Retain",
+      "Metadata": {
+        "aws:cdk:path": "fs-asterisk-media/TaskDefinition/AsteriskContainer/LogGroup/Resource"
+      }
+    },
+    "TaskDefinitionExecutionRole8D61C2FB": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "ecs-tasks.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "fs-asterisk-media/TaskDefinition/ExecutionRole/Resource"
+      }
+    },
+    "TaskDefinitionExecutionRoleDefaultPolicy1F3406F5": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "ecr:BatchCheckLayerAvailability",
+                "ecr:GetDownloadUrlForLayer",
+                "ecr:BatchGetImage"
+              ],
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:aws:ecr:",
+                    {
+                      "Ref": "AWS::Region"
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId"
+                    },
+                    ":repository/test-repo"
+                  ]
+                ]
+              }
+            },
+            {
+              "Action": "ecr:GetAuthorizationToken",
+              "Effect": "Allow",
+              "Resource": "*"
+            },
+            {
+              "Action": [
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+              ],
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "TaskDefinitionAsteriskContainerLogGroupCC3973E7",
+                  "Arn"
+                ]
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "TaskDefinitionExecutionRoleDefaultPolicy1F3406F5",
+        "Roles": [
+          {
+            "Ref": "TaskDefinitionExecutionRole8D61C2FB"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "fs-asterisk-media/TaskDefinition/ExecutionRole/DefaultPolicy/Resource"
+      }
+    },
+    "ServiceD69D759B": {
+      "Type": "AWS::ECS::Service",
+      "Properties": {
+        "Cluster": {
+          "Ref": "ClusterEB0386A7"
+        },
+        "DeploymentConfiguration": {
+          "MaximumPercent": 200,
+          "MinimumHealthyPercent": 50
+        },
+        "DesiredCount": 1,
+        "EnableECSManagedTags": false,
+        "LaunchType": "FARGATE",
+        "NetworkConfiguration": {
+          "AwsvpcConfiguration": {
+            "AssignPublicIp": "DISABLED",
+            "SecurityGroups": [
+              {
+                "Fn::GetAtt": [
+                  "ServiceSecurityGroupC96ED6A7",
+                  "GroupId"
+                ]
+              }
+            ],
+            "Subnets": [
+              "p-12345",
+              "p-67890"
+            ]
+          }
+        },
+        "ServiceName": "MediaService",
+        "TaskDefinition": {
+          "Ref": "TaskDefinitionB36D86D9"
+        }
+      },
+      "DependsOn": [
+        "ClusterAutoScalingGroupASG8FBA5099",
+        "ClusterAutoScalingGroupDrainECSHookFunctionAllowInvokefsasteriskmediaClusterAutoScalingGroupLifecycleHookDrainHookTopic67B270638C18A898",
+        "ClusterAutoScalingGroupDrainECSHookFunction3B9A0374",
+        "ClusterAutoScalingGroupDrainECSHookFunctionServiceRoleDefaultPolicy68C0A46A",
+        "ClusterAutoScalingGroupDrainECSHookFunctionServiceRole57B0BAC7",
+        "ClusterAutoScalingGroupDrainECSHookFunctionTopic32FF6F7C",
+        "ClusterAutoScalingGroupInstanceProfileF796E806",
+        "ClusterAutoScalingGroupInstanceRoleDefaultPolicy2F28E70E",
+        "ClusterAutoScalingGroupInstanceRoleFF996623",
+        "ClusterAutoScalingGroupInstanceSecurityGroupEFE9207E",
+        "ClusterAutoScalingGroupLaunchConfig6C0C8B5B",
+        "ClusterAutoScalingGroupLifecycleHookDrainHookF53E2057",
+        "ClusterAutoScalingGroupLifecycleHookDrainHookRoleDefaultPolicy7EBAED85",
+        "ClusterAutoScalingGroupLifecycleHookDrainHookRoleC77C78EE",
+        "ClusterAutoScalingGroupLifecycleHookDrainHookTopicF7EAE279",
+        "ClusterEB0386A7",
+        "TaskDefinitionAsteriskContainerLogGroupCC3973E7",
+        "TaskDefinitionExecutionRoleDefaultPolicy1F3406F5",
+        "TaskDefinitionExecutionRole8D61C2FB",
+        "TaskDefinitionB36D86D9",
+        "TaskDefinitionTaskRoleDefaultPolicy282E8624",
+        "TaskDefinitionTaskRoleFD40A61D"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "fs-asterisk-media/Service/Service"
+      }
+    },
+    "ServiceSecurityGroupC96ED6A7": {
+      "Type": "AWS::EC2::SecurityGroup",
+      "Properties": {
+        "GroupDescription": "fs-asterisk-media/Service/SecurityGroup",
+        "SecurityGroupEgress": [
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow all outbound traffic by default",
+            "IpProtocol": "-1"
+          }
+        ],
+        "VpcId": "vpc-12345"
+      },
+      "DependsOn": [
+        "ClusterAutoScalingGroupASG8FBA5099",
+        "ClusterAutoScalingGroupDrainECSHookFunctionAllowInvokefsasteriskmediaClusterAutoScalingGroupLifecycleHookDrainHookTopic67B270638C18A898",
+        "ClusterAutoScalingGroupDrainECSHookFunction3B9A0374",
+        "ClusterAutoScalingGroupDrainECSHookFunctionServiceRoleDefaultPolicy68C0A46A",
+        "ClusterAutoScalingGroupDrainECSHookFunctionServiceRole57B0BAC7",
+        "ClusterAutoScalingGroupDrainECSHookFunctionTopic32FF6F7C",
+        "ClusterAutoScalingGroupInstanceProfileF796E806",
+        "ClusterAutoScalingGroupInstanceRoleDefaultPolicy2F28E70E",
+        "ClusterAutoScalingGroupInstanceRoleFF996623",
+        "ClusterAutoScalingGroupInstanceSecurityGroupEFE9207E",
+        "ClusterAutoScalingGroupLaunchConfig6C0C8B5B",
+        "ClusterAutoScalingGroupLifecycleHookDrainHookF53E2057",
+        "ClusterAutoScalingGroupLifecycleHookDrainHookRoleDefaultPolicy7EBAED85",
+        "ClusterAutoScalingGroupLifecycleHookDrainHookRoleC77C78EE",
+        "ClusterAutoScalingGroupLifecycleHookDrainHookTopicF7EAE279",
+        "ClusterEB0386A7",
+        "TaskDefinitionAsteriskContainerLogGroupCC3973E7",
+        "TaskDefinitionExecutionRoleDefaultPolicy1F3406F5",
+        "TaskDefinitionExecutionRole8D61C2FB",
+        "TaskDefinitionB36D86D9",
+        "TaskDefinitionTaskRoleDefaultPolicy282E8624",
+        "TaskDefinitionTaskRoleFD40A61D"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "fs-asterisk-media/Service/SecurityGroup/Resource"
+      }
+    },
+    "ServiceTaskCountTarget23E25614": {
+      "Type": "AWS::ApplicationAutoScaling::ScalableTarget",
+      "Properties": {
+        "MaxCapacity": 2,
+        "MinCapacity": 1,
+        "ResourceId": {
+          "Fn::Join": [
+            "",
+            [
+              "service/",
+              {
+                "Ref": "ClusterEB0386A7"
+              },
+              "/",
+              {
+                "Fn::GetAtt": [
+                  "ServiceD69D759B",
+                  "Name"
+                ]
+              }
+            ]
+          ]
+        },
+        "RoleARN": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":iam::319561458694:role/aws-service-role/ecs.application-autoscaling.amazonaws.com/AWSServiceRoleForApplicationAutoScaling_ECSService"
+            ]
+          ]
+        },
+        "ScalableDimension": "ecs:service:DesiredCount",
+        "ServiceNamespace": "ecs"
+      },
+      "DependsOn": [
+        "ClusterAutoScalingGroupASG8FBA5099",
+        "ClusterAutoScalingGroupDrainECSHookFunctionAllowInvokefsasteriskmediaClusterAutoScalingGroupLifecycleHookDrainHookTopic67B270638C18A898",
+        "ClusterAutoScalingGroupDrainECSHookFunction3B9A0374",
+        "ClusterAutoScalingGroupDrainECSHookFunctionServiceRoleDefaultPolicy68C0A46A",
+        "ClusterAutoScalingGroupDrainECSHookFunctionServiceRole57B0BAC7",
+        "ClusterAutoScalingGroupDrainECSHookFunctionTopic32FF6F7C",
+        "ClusterAutoScalingGroupInstanceProfileF796E806",
+        "ClusterAutoScalingGroupInstanceRoleDefaultPolicy2F28E70E",
+        "ClusterAutoScalingGroupInstanceRoleFF996623",
+        "ClusterAutoScalingGroupInstanceSecurityGroupEFE9207E",
+        "ClusterAutoScalingGroupLaunchConfig6C0C8B5B",
+        "ClusterAutoScalingGroupLifecycleHookDrainHookF53E2057",
+        "ClusterAutoScalingGroupLifecycleHookDrainHookRoleDefaultPolicy7EBAED85",
+        "ClusterAutoScalingGroupLifecycleHookDrainHookRoleC77C78EE",
+        "ClusterAutoScalingGroupLifecycleHookDrainHookTopicF7EAE279",
+        "ClusterEB0386A7",
+        "TaskDefinitionAsteriskContainerLogGroupCC3973E7",
+        "TaskDefinitionExecutionRoleDefaultPolicy1F3406F5",
+        "TaskDefinitionExecutionRole8D61C2FB",
+        "TaskDefinitionB36D86D9",
+        "TaskDefinitionTaskRoleDefaultPolicy282E8624",
+        "TaskDefinitionTaskRoleFD40A61D"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "fs-asterisk-media/Service/TaskCount/Target/Resource"
+      }
+    },
+    "ServiceTaskCountTargetCpuScalingCC8A5DF6": {
+      "Type": "AWS::ApplicationAutoScaling::ScalingPolicy",
+      "Properties": {
+        "PolicyName": {
+          "Fn::Join": [
+            "",
+            [
+              {
+                "Ref": "AWS::StackName"
+              },
+              "-AsgPolicy"
+            ]
+          ]
+        },
+        "PolicyType": "TargetTrackingScaling",
+        "ScalingTargetId": {
+          "Ref": "ServiceTaskCountTarget23E25614"
+        },
+        "TargetTrackingScalingPolicyConfiguration": {
+          "PredefinedMetricSpecification": {
+            "PredefinedMetricType": "ECSServiceAverageCPUUtilization"
+          },
+          "TargetValue": 60
+        }
+      },
+      "DependsOn": [
+        "ClusterAutoScalingGroupASG8FBA5099",
+        "ClusterAutoScalingGroupDrainECSHookFunctionAllowInvokefsasteriskmediaClusterAutoScalingGroupLifecycleHookDrainHookTopic67B270638C18A898",
+        "ClusterAutoScalingGroupDrainECSHookFunction3B9A0374",
+        "ClusterAutoScalingGroupDrainECSHookFunctionServiceRoleDefaultPolicy68C0A46A",
+        "ClusterAutoScalingGroupDrainECSHookFunctionServiceRole57B0BAC7",
+        "ClusterAutoScalingGroupDrainECSHookFunctionTopic32FF6F7C",
+        "ClusterAutoScalingGroupInstanceProfileF796E806",
+        "ClusterAutoScalingGroupInstanceRoleDefaultPolicy2F28E70E",
+        "ClusterAutoScalingGroupInstanceRoleFF996623",
+        "ClusterAutoScalingGroupInstanceSecurityGroupEFE9207E",
+        "ClusterAutoScalingGroupLaunchConfig6C0C8B5B",
+        "ClusterAutoScalingGroupLifecycleHookDrainHookF53E2057",
+        "ClusterAutoScalingGroupLifecycleHookDrainHookRoleDefaultPolicy7EBAED85",
+        "ClusterAutoScalingGroupLifecycleHookDrainHookRoleC77C78EE",
+        "ClusterAutoScalingGroupLifecycleHookDrainHookTopicF7EAE279",
+        "ClusterEB0386A7",
+        "TaskDefinitionAsteriskContainerLogGroupCC3973E7",
+        "TaskDefinitionExecutionRoleDefaultPolicy1F3406F5",
+        "TaskDefinitionExecutionRole8D61C2FB",
+        "TaskDefinitionB36D86D9",
+        "TaskDefinitionTaskRoleDefaultPolicy282E8624",
+        "TaskDefinitionTaskRoleFD40A61D"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "fs-asterisk-media/Service/TaskCount/Target/CpuScaling/Resource"
+      }
+    },
+    "CDKMetadata": {
+      "Type": "AWS::CDK::Metadata",
+      "Properties": {
+        "Modules": "aws-cdk=1.90.0,@aws-cdk/assets=1.91.0,@aws-cdk/aws-applicationautoscaling=1.91.0,@aws-cdk/aws-autoscaling=1.91.0,@aws-cdk/aws-autoscaling-common=1.91.0,@aws-cdk/aws-autoscaling-hooktargets=1.91.0,@aws-cdk/aws-batch=1.91.0,@aws-cdk/aws-cloudformation=1.91.0,@aws-cdk/aws-cloudwatch=1.91.0,@aws-cdk/aws-codebuild=1.91.0,@aws-cdk/aws-codeguruprofiler=1.91.0,@aws-cdk/aws-codepipeline=1.91.0,@aws-cdk/aws-codepipeline-actions=1.91.0,@aws-cdk/aws-codestarconnections=1.91.0,@aws-cdk/aws-ec2=1.91.0,@aws-cdk/aws-ecr=1.91.0,@aws-cdk/aws-ecr-assets=1.91.0,@aws-cdk/aws-ecs=1.91.0,@aws-cdk/aws-elasticloadbalancingv2=1.91.0,@aws-cdk/aws-events=1.91.0,@aws-cdk/aws-events-targets=1.91.0,@aws-cdk/aws-iam=1.91.0,@aws-cdk/aws-kms=1.91.0,@aws-cdk/aws-lambda=1.91.0,@aws-cdk/aws-logs=1.91.0,@aws-cdk/aws-s3=1.91.0,@aws-cdk/aws-s3-assets=1.91.0,@aws-cdk/aws-servicediscovery=1.91.0,@aws-cdk/aws-sns=1.91.0,@aws-cdk/aws-sns-subscriptions=1.91.0,@aws-cdk/aws-sqs=1.91.0,@aws-cdk/aws-ssm=1.91.0,@aws-cdk/cloud-assembly-schema=1.91.0,@aws-cdk/core=1.91.0,@aws-cdk/custom-resources=1.91.0,@aws-cdk/cx-api=1.91.0,@aws-cdk/region-info=1.91.0,jsii-runtime=node.js/v15.8.0"
+      },
+      "Metadata": {
+        "aws:cdk:path": "fs-asterisk-media/CDKMetadata/Default"
+      }
+    }
+  },
+  "Parameters": {
+    "SsmParameterValueawsserviceecsoptimizedamiamazonlinux2recommendedimageidC96584B6F00A464EAD1953AFF4B05118Parameter": {
+      "Type": "AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>",
+      "Default": "/aws/service/ecs/optimized-ami/amazon-linux-2/recommended/image_id"
+    }
+  }
+}
