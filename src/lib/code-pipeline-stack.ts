@@ -43,6 +43,7 @@ export class CodePipelineStack extends cdk.Stack {
         const approvalAction = new actions.ManualApprovalAction({
             actionName: 'ApprovalAction',
             runOrder: 2,
+            additionalInformation: codePipeline.GlobalVariables.executionId
         });
 
         const codeBuildRole = new iam.Role(this, 'CodeBuildRole', {
