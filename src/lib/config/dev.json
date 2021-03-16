@@ -3,7 +3,7 @@
         "accountId": "319561458694",
         "region": "us-west-2",
         "stackName": "AsteriskMedia",
-        "vpc_id": "vpc-5f9fb825",
+        "vpc_id": "vpc-56e4742e",
         "image_repo_name": "test-repo",
         "image_repo_tag": "latest"
     },
